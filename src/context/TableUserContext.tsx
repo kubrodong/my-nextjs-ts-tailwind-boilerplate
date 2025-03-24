@@ -8,8 +8,8 @@ import {
   useEffect,
   useMemo,
 } from 'react';
-import { getUsers } from '@/services/UserService';
-import { UserResponse } from '@/types/api-response';
+import { getUsers } from '@/services/userService';
+import { UserResponse } from '@/types/services/response/user';
 
 interface TableUserContextProps {
   data: UserResponse;

@@ -1,16 +1,16 @@
-'use server';
+'use client';
 
-import client from '@/lib/axios';
-import { UserResponse } from '@/types/api-response';
+import apiService from '@/lib/axios';
+import { UserResponse } from '@/types/services/response/user';
 
 interface FormPayload {}
 
 export async function getUsers() {
-  const response = await client.get<UserResponse>(`/users`);
+  const response = await apiService.get<UserResponse>(`/users`);
   return response.data;
 }
 
 export async function postUser(payload: FormPayload) {
-  const response = await client.post(`/user/add`, payload);
+  const response = await apiService.post(`/user/add`, payload);
   return response.data;
 }

@@ -3,6 +3,7 @@
 import { createContext, useContext, ReactNode, useMemo } from 'react';
 import { useLoginForm } from '@/hooks/useLoginForm';
 import { useRouter } from 'next/navigation';
+import { postLogin } from '@/services/authService';
 
 interface LoginFormContextProps {
   formik: ReturnType<typeof useLoginForm>;
@@ -22,9 +23,8 @@ export const useLoginFormContext = () => {
 export const LoginFormProvider = ({ children }: { children: ReactNode }) => {
   const router = useRouter();
 
-  const formik = useLoginForm((values) => {
-    console.log('Final submission:', values);
-    router.push('/home');
+  const formik = useLoginForm(async (values) => {
+    postLogin(values).then(() => router.push('/home'));
   });
 
   // ✅ Memoize the context value to avoid unnecessary re-renders

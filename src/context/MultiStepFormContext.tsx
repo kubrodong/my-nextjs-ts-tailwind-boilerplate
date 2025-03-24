@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useState, ReactNode, useMemo } from 'react';
 import { useMultiStepForm } from '../hooks/useMultiStepForm';
-import { postUser } from '@/services/UserService';
+import { postUser } from '@/services/userService';
 
 interface MultiStepFormContextProps {
   step: number;
